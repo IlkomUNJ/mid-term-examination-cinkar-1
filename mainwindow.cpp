@@ -33,7 +33,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     setCentralWidget(centralWidget);
 
     setWindowTitle("Drawing Canvas");
-    setFixedSize(450, 450);
+    // setFixedSize(300, 300);
+
+    // 🔹 Set ukuran awal window
+    resize(800, 800); // atau bisa pakai setFixedSize() kalau kamu mau fix
+    qDebug() << "Constructor: Ukuran awal window =" << width() << "x" << height();
+
+
+    m_canvas->addMatchedWindow(QRect(0, 0, 800, 800));
+
 }
 
 MainWindow::~MainWindow()

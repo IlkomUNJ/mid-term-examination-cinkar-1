@@ -19,8 +19,8 @@ class DrawingCanvas : public QWidget
 {
     Q_OBJECT
 private:
-    const int WINDOW_WIDTH=600;
-    const int WINDOW_HEIGHT=400;
+    const int WINDOW_WIDTH=800;
+    const int WINDOW_HEIGHT=800;
 
 public:
     explicit DrawingCanvas(QWidget *parent = nullptr);
@@ -29,6 +29,8 @@ public:
     void clearPoints();
     void paintLines();
     void segmentDetection();
+    void addMatchedWindow(const QRect &rect);   // <== deklarasi baru
+    void clearMatchedWindows();
 
 protected:
     // Overridden method to handle painting on the widget
@@ -42,5 +44,6 @@ private:
     QVector<QPoint> m_points;
 
     bool isPaintLinesClicked = false;
+    QVector<QRect> matchedWindows;
 };
 #endif // DRAWINGCANVAS_H

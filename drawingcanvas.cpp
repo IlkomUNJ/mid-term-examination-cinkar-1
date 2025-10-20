@@ -1,8 +1,9 @@
 #include "drawingcanvas.h"
 
 DrawingCanvas::DrawingCanvas(QWidget *parent)  {
+
     // Set a minimum size for the canvas
-    setMinimumSize(this->WINDOW_WIDTH, this->WINDOW_HEIGHT);
+    setFixedSize(this->WINDOW_WIDTH, this->WINDOW_HEIGHT);
     // Set a solid background color
     setStyleSheet("background-color: white; border: 1px solid gray;");
 }
@@ -52,6 +53,17 @@ void DrawingCanvas::segmentDetection(){
     return;
 }
 
+void DrawingCanvas::addMatchedWindow(const QRect &rect) {
+    matchedWindows.append(rect);
+    update(); // langsung redraw canvas
+}
+
+void DrawingCanvas::clearMatchedWindows() {
+    matchedWindows.clear();
+    update();
+}
+
+
 void DrawingCanvas::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
@@ -85,6 +97,17 @@ void DrawingCanvas::paintEvent(QPaintEvent *event){
         //return painter pen to blue
         pen.setColor(Qt::blue);
         painter.setPen(pen);
+    }
+
+    if (!matchedWindows.isEmpty()) {
+        QPen rectPen(QColor(128, 0, 128));
+        rectPen.setWidth(2);
+        painter.setPen(rectPen);
+        painter.setBrush(Qt::NoBrush);
+
+        for (const QRect &rect : matchedWindows) {
+            painter.drawRect(rect);
+        }
     }
 }
 
