@@ -17,6 +17,10 @@ Soal:
 3. Develop automated algorithm based on the previous findings to detect all potential candidates
 of a segment
 
+Gambar persegi ungu menunjukkan batas luar yang bisa digambar
+
+### AI 
+
 Ai perplexty: 
 saat ingin mengcopy link perplexity, web tersebut tiba tiba refresh dan history tidak ada
 mungkin karena web tersebut sedang down. ini web yang direkomendasikan web perplexity sebelum web tersebut down:
